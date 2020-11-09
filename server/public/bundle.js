@@ -111,7 +111,6 @@ module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/li
   \************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 12:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -304,7 +303,6 @@ module.exports = function xhrAdapter(config) {
   \*****************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 50:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -371,7 +369,6 @@ module.exports.default = axios;
   \*************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 19:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -404,7 +401,6 @@ module.exports = Cancel;
   \******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 57:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -475,7 +471,6 @@ module.exports = CancelToken;
   \***************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -494,7 +489,6 @@ module.exports = function isCancel(value) {
   \**********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 95:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -603,7 +597,6 @@ module.exports = Axios;
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 52:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -669,7 +662,6 @@ module.exports = InterceptorManager;
   \******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 15:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -703,7 +695,6 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
   \****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 15:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -735,7 +726,6 @@ module.exports = function createError(message, config, code, request, response) 
   \********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 23:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -828,7 +818,6 @@ module.exports = function dispatchRequest(config) {
   \*****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 13:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -884,7 +873,6 @@ module.exports = function enhanceError(error, config, code, request, response) {
   \****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 13:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -985,7 +973,6 @@ module.exports = function mergeConfig(config1, config2) {
   \***********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 12:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1024,7 +1011,6 @@ module.exports = function settle(resolve, reject, response) {
   \******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 13:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1058,7 +1044,6 @@ module.exports = function transformData(data, headers, fns) {
   \********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 98:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1170,7 +1155,6 @@ module.exports = defaults;
   \************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -1195,7 +1179,6 @@ module.exports = function bind(fn, thisArg) {
   \****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 22:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1279,7 +1262,6 @@ module.exports = function buildURL(url, params, paramsSerializer) {
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -1307,7 +1289,6 @@ module.exports = function combineURLs(baseURL, relativeURL) {
   \***************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 5:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1374,7 +1355,6 @@ module.exports = (
   \*********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 9:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -1402,7 +1382,6 @@ module.exports = function isAbsoluteURL(url) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 5:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1484,7 +1463,6 @@ module.exports = (
   \***************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 5:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1510,7 +1488,6 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
   \********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 27:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1577,7 +1554,6 @@ module.exports = function parseHeaders(headers) {
   \**************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 23:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -1618,7 +1594,6 @@ module.exports = function spread(callback) {
   \*****************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 328:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -2009,11 +1984,8 @@ class Home extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     super(props);
     this.hashParams = {};
     this.isAuth = false;
-    this.getHashParams = this.getHashParams.bind(this); // this.authorize = this.authorize.bind(this);
-  } // componentDidMount() {
-  //     this.getHashParams();
-  // }
-
+    this.getHashParams = this.getHashParams.bind(this);
+  }
 
   getHashParams() {
     const hashParams = {};
@@ -2026,79 +1998,10 @@ class Home extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     }
 
     return hashParams;
-  } // async authorize() {
-  //     const auth = await axios.get('https://api.spotify.com/v1/me', {
-  //         headers: { 'Authorization': 'Bearer' + this.hashParams.access_token }
-  //     });    
-  //     return auth.data;
-  // }
-
+  }
 
   render() {
-    // var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-    //     userProfileTemplate = Handlebars.compile(userProfileSource),
-    //     userProfilePlaceholder = document.getElementById('user-profile');
-    // var oauthSource = document.getElementById('oauth-template').innerHTML,
-    //     oauthTemplate = Handlebars.compile(oauthSource),
-    //     oauthPlaceholder = document.getElementById('oauth');
-    // var params = this.getHashParams();
-    // var access_token = params.access_token,
-    //     refresh_token = params.refresh_token,
-    //     error = params.error;
-    //     if (error) {
-    //         alert('There was an error during the authentication');
-    //       } else {
-    //         if (access_token) {
-    //           // render oauth info
-    //           oauthPlaceholder.innerHTML = oauthTemplate({
-    //             access_token: access_token,
-    //             refresh_token: refresh_token
-    //           });
-    //           $.ajax({
-    //               url: 'https://api.spotify.com/v1/me',
-    //               headers: {
-    //                 'Authorization': 'Bearer ' + access_token
-    //               },
-    //               success: function(response) {
-    //                 userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-    //                 $('#login').hide();
-    //                 $('#loggedin').show();
-    //               }
-    //           });
-    //         } else {
-    //             // render initial screen
-    //             $('#login').show();
-    //             $('#loggedin').hide();
-    //         }
-    // document.getElementById('obtain-new-token').addEventListener('click', function() {
-    //   $.ajax({
-    //     url: '/refresh_token',
-    //     data: {
-    //       'refresh_token': refresh_token
-    //     }
-    //   }).done(function(data) {
-    //     access_token = data.access_token;
-    //     oauthPlaceholder.innerHTML = oauthTemplate({
-    //       access_token: access_token,
-    //       refresh_token: refresh_token
-    //     });
-    //   });
-    // }, false);
-    // }
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Logged in!"); //     !this.isAuth ? 
-    //         console.log(this.authorize())
-    //         : console.log('not yet auth')
-    //     return (
-    //         this.hashParams.error ? 
-    //             alert('There was an error during the authentication') :
-    //             this.hashParams.access_token ? 
-    //                 <div className="oauth-section">
-    //                     <h4>Access token: { this.hashParams.access_token }</h4>
-    //                     <h4>Refresh token: { this.hashParams.refresh_token }</h4>
-    //                     <button>Obtain new token using the refresh token</button>
-    //                 </div>
-    //             : <div />
-    //    );
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Logged in!");
   }
 
 }
@@ -2193,7 +2096,6 @@ document.getElementById('loggedin'));
   \********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 65:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -2273,7 +2175,6 @@ module.exports = exports['default'];
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 65:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -2492,7 +2393,6 @@ exports.logger = _logger2['default'];
   \*********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module */
-/*! CommonJS bailout: module.exports is used directly at 30:0-14 */
 /***/ ((module, exports) => {
 
 "use strict";
@@ -2612,7 +2512,6 @@ function parse(input, options) {
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 167:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -3626,7 +3525,6 @@ function preparePartialBlock(open, program, close, locInfo) {
   \*************************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 1158:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -4799,7 +4697,6 @@ module.exports = exports['default'];
   \************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module */
-/*! CommonJS bailout: module.exports is used directly at 736:0-14 */
 /***/ ((module, exports) => {
 
 "use strict";
@@ -5753,7 +5650,6 @@ PrintVisitor.prototype.HashPair = function (pair) {
   \*************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 139:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -5907,7 +5803,6 @@ module.exports = exports['default'];
   \************************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 220:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6174,7 +6069,6 @@ function registerDefaultDecorators(instance) {
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 28:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6217,7 +6111,6 @@ module.exports = exports['default'];
   \******************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module */
-/*! CommonJS bailout: module.exports is used directly at 63:0-14 */
 /***/ ((module, exports) => {
 
 "use strict";
@@ -6368,7 +6261,6 @@ function moveHelperToHooks(instance, helperName, keepHelper) {
   \*************************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 38:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6421,7 +6313,6 @@ module.exports = exports['default'];
   \*********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__, __webpack_require__.g, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 103:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6539,7 +6430,6 @@ module.exports = exports['default'];
   \*******************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 24:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6578,7 +6468,6 @@ module.exports = exports['default'];
   \*******************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 45:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6638,7 +6527,6 @@ module.exports = exports['default'];
   \********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, exports) => {
 
 "use strict";
@@ -6678,7 +6566,6 @@ module.exports = exports['default'];
   \***********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module */
-/*! CommonJS bailout: module.exports is used directly at 15:0-14 */
 /***/ ((module, exports) => {
 
 "use strict";
@@ -6708,7 +6595,6 @@ module.exports = exports['default'];
   \*********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 42:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6929,7 +6815,6 @@ function wrapHelper(helper, transformOptionsFn) {
   \***************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 46:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6990,7 +6875,6 @@ module.exports = exports['default'];
   \********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module, __webpack_require__.g, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 18:0-14 */
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -7416,7 +7300,6 @@ function passLookupPropertyOption(helper, container) {
   \********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_exports__, module */
-/*! CommonJS bailout: module.exports is used directly at 14:0-14 */
 /***/ ((module, exports) => {
 
 "use strict";
@@ -7594,7 +7477,6 @@ function appendContextPath(contextPath, id) {
   \**********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 13:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // USAGE:
@@ -8587,7 +8469,6 @@ function createMemoryHistory(props) {
   \**********************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 103:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -8704,7 +8585,6 @@ module.exports = hoistNonReactStatics;
   \***************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
 module.exports = Array.isArray || function (arr) {
@@ -8720,9 +8600,6 @@ module.exports = Array.isArray || function (arr) {
   \********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, top-level-this-exports, __webpack_exports__ */
-/*! CommonJS bailout: this is used directly at 40:46-50 */
-/*! CommonJS bailout: module.exports is used directly at 18:43-57 */
-/*! CommonJS bailout: module.exports is used directly at 27:2-16 */
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -19808,7 +19685,6 @@ var index = react__WEBPACK_IMPORTED_MODULE_0__.createContext || createReactConte
   \*********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 65:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -19912,7 +19788,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 102:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -20028,7 +19903,6 @@ module.exports = checkPropTypes;
   \************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 38:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -20633,7 +20507,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   \******************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 14:2-16 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 /**
@@ -20661,7 +20534,6 @@ if (true) {
   \*************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 12:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -48513,7 +48385,6 @@ if (true) {
   \************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var isarray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
@@ -51859,16 +51730,6 @@ exports.unstable_wrap = unstable_wrap;
 /*! export unstable_wrapCallback [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_exports__ */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 52:26-46 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 125:13-33 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 149:24-44 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 193:15-35 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 548:28-48 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 565:25-45 */
-/*! CommonJS bailout: exports.unstable_shouldYield(...) prevents optimization as exports is passed as call context at 578:74-102 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 591:20-40 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 695:20-40 */
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 804:24-44 */
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";

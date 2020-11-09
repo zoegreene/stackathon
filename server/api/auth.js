@@ -62,7 +62,7 @@ router.get('/callback', (req, res, next) => {
         );
     } else {
         res.clearCookie(stateKey);
-        const authOptions = {
+        var authOptions = {
             url: 'https://accounts.spotify.com/api/token',
             form: {
                 code: code,
@@ -70,19 +70,18 @@ router.get('/callback', (req, res, next) => {
                 grant_type: 'authorization_code'
             },
             headers: {
-                'Authorization': 'Basic' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+                'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
             },
             json: true
         };
         request.post(authOptions, function(error, response, body) {
-            console.log('ERROR IS', response.body)
             if (!error && response.statusCode === 200) {
-                const access_token = body.access_token;
-                const refresh_token = body.refresh_token;
-
-                const options = {
-                    url: 'https://api/spotify.com/v1/me',
-                    headers: { 'Authorization': 'Bearer' + access_token },
+                var access_token = body.access_token,
+                    refresh_token = body.refresh_token;
+    
+                var options = {
+                    url: 'https://api.spotify.com/v1/me',
+                    headers: { 'Authorization': 'Bearer ' + access_token },
                     json: true
                 };
 
@@ -113,8 +112,8 @@ router.get('/callback', (req, res, next) => {
 router.get('/refresh_token', function(req, res) {
 
     // requesting access token from refresh token
-    const refresh_token = req.query.refresh_token;
-    const authOptions = {
+    var refresh_token = req.query.refresh_token;
+    var authOptions = {
         url: 'https://accounts.spotify.com/api/token',
         headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
         form: {
@@ -126,7 +125,7 @@ router.get('/refresh_token', function(req, res) {
   
     request.post(authOptions, function(error, response, body) {
         if (!error && response.statusCode === 200) {
-            const access_token = body.access_token;
+            var access_token = body.access_token;
             res.send({
             'access_token': access_token
             });
