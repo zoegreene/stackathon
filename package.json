@@ -1,0 +1,39 @@
+{
+  "name": "playlist-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "npm run build-watch & npm run start-server",
+    "start-server": "nodemon main.js",
+    "build-watch": "webpack -w",
+    "build": "webpack --mode=\"production\"",
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "querystring": "^0.2.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-react": "^7.12.5",
+    "axios": "^0.21.0",
+    "babel-loader": "^8.1.0",
+    "handlebars": "^4.7.6",
+    "jquery": "^3.5.1",
+    "nodemon": "^2.0.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
