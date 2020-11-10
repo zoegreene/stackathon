@@ -3,6 +3,7 @@
     <head>
         <title>Cut for Time</title>
         <link rel="stylesheet" href="/style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Abel&family=Open+Sans&display=swap" rel="stylesheet">
         <style type="text/css">
             #login, #loggedin {
               display: none;
@@ -16,11 +17,15 @@
         </style>
     </head>
     <body>
-        <h1>CUT FOR TIME</h1>
         <div id="main">
             <div id="login">
-                <p>[INSERT DESCRIPTION OF SITE HERE]</p>
-                <a href="/api/auth/login" class="btn btn-primary">LOG IN WITH SPOTIFY</a>
+                <h1 class="page-title">CUT FOR TIME</h1>
+                <p>Welcome to CUT FOR TIME, the easiest way to create playlists of a given duration 
+                    to be the perfect soundtrack for your busy lifestyle.</p>
+                <p>Log in with Spotify to get started.</p>
+                <div class="btn-div">
+                    <a href="/api/auth/login" class="btn btn-primary">LOG IN</a>
+                </div>
             </div>
             <div id="loggedin">
             </div>
