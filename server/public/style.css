@@ -26,8 +26,29 @@
     margin: 2rem;
 }
 
+/* ------ NAVIGATION ------ */
+
+nav {
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 0 0 0 1rem;
+}
+
+.user-info {
+    display: flex;
+    margin: 0.5rem;
+    align-items: center;
+}
+
+.media-object {
+    margin: 0 0 0 1rem;
+}
 
 /* ------ ABOUT ME SECTION ------ */
 #about-me {
     display: flex;
+
 }
