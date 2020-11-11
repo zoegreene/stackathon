@@ -6,30 +6,12 @@ import { getParam } from '../redux/hashParam';
 
 class Navbar extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            hashParams: {},
-        };
-        this.getHashParams = this.getHashParams.bind(this);
-    }
-
     componentDidMount() {
-        // this.getHashParams();
-        this.props.getParam();
-        // if (this.state.hashParams.access_token) {
-        //     this.props.getUser(this.state.hashParams.access_token);
-        // }
-        if (this.props.hashParam.access_token) {
-            this.props.getUser(this.props.hashParam.access_token);
-        }
-    }
+        const { getParam, getUser, hashParam } = this.props;
 
-    getHashParams() {
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-            q = window.location.hash.substring(1);
-        while ( e = r.exec(q)) {
-           this.state.hashParams[e[1]] = decodeURIComponent(e[2]);
+        getParam();
+        if (hashParam.access_token) {
+            getUser(hashParam.access_token);
         }
     }
 

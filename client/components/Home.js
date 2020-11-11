@@ -2,8 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import AboutMe from './AboutMe';
+import PlaylistForm from './PlaylistForm';
 import { getUser } from '../redux/user';
 import { getSavedSongs } from '../redux/songs';
+import { getParam } from '../redux/hashParam';
 
 // To get length of track
 // https://developer.spotify.com/console/get-audio-analysis-track/?id=06AKEBrKUckW0KREUWRnvT
@@ -13,47 +15,20 @@ import { getSavedSongs } from '../redux/songs';
 
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            hashParams: {},
-        };
 
-        this.getHashParams = this.getHashParams.bind(this);
-        this.createPlaylist = this.createPlaylist.bind(this);
-    }
+    async componentDidMount() {
+        const { getParam, getUser, getSavedSongs } = this.props;
+        
+        await getParam();
 
-    componentDidMount() {
-        this.getHashParams();
-
-        if (this.state.hashParams.access_token) {
-            this.props.getUser(this.state.hashParams.access_token);
-            this.props.getSavedSongs(this.state.hashParams.access_token);
+        if (this.props.hashParam.access_token) {
+            getUser(this.props.hashParam.access_token);
+            getSavedSongs(this.props.hashParam.access_token);
         }
-    }
-
-    getHashParams() {
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-            q = window.location.hash.substring(1);
-        while ( e = r.exec(q)) {
-           this.state.hashParams[e[1]] = decodeURIComponent(e[2]);
-        }
-    }
-
-    async createPlaylist(ev) {
-        ev.preventDefault();
-        const playlist = await axios.post(`https://api.spotify.com/v1/users/${this.props.user.id}/playlists`, {
-            name: "Cut for Time Playlist",
-            description: "Playlist created by Cut for Time app",
-            public: false
-        }, {
-            headers: { 'Authorization': `Bearer ${this.state.hashParams.access_token}` }
-        });
-        console.log(playlist.data);
     }
 
     render() {
-        const { user, savedSongs } = this.props;
+        const { user, hashParam, savedSongs } = this.props;
         return (
             <div>
                 {/* <AboutMe user={ user } /> */}
@@ -67,7 +42,7 @@ class Home extends React.Component {
                         }) 
                     }
                 </div>
-                <button onClick={ this.createPlaylist }>Create Playlist</button>
+                <PlaylistForm user={ user } hashParam={ hashParam } savedSongs={ savedSongs } />
             </div>
 
         )
@@ -77,14 +52,16 @@ class Home extends React.Component {
 const mapStateToProps = state => {
     return {
         user: state.user,
-        savedSongs: state.songs
+        savedSongs: state.songs,
+        hashParam: state.hashParam
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         getUser: (accessToken) => dispatch(getUser(accessToken)),
-        getSavedSongs: (accessToken) => dispatch(getSavedSongs(accessToken))
+        getSavedSongs: (accessToken) => dispatch(getSavedSongs(accessToken)),
+        getParam: () => dispatch(getParam())
     }
 }
 
