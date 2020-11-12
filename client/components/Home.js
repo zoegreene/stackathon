@@ -1,14 +1,12 @@
+// LIBRARIES
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import AboutMe from './AboutMe';
+
+// FILES
 import PlaylistForm from './PlaylistForm';
 import { getUser } from '../redux/user';
 import { getSavedSongs } from '../redux/songs';
 import { getParam } from '../redux/hashParam';
-
-// To get length of track
-// https://developer.spotify.com/console/get-audio-analysis-track/?id=06AKEBrKUckW0KREUWRnvT
 
 // Web player
 // https://developer.spotify.com/documentation/web-playback-sdk/quick-start/
@@ -31,8 +29,7 @@ class Home extends React.Component {
         const { user, hashParam, savedSongs } = this.props;
         return (
             <div>
-                {/* <AboutMe user={ user } /> */}
-                <div>
+                {/* <div>
                     <h3>My Saved Songs</h3>
                     { 
                         savedSongs.map(song => {
@@ -41,7 +38,7 @@ class Home extends React.Component {
                             )
                         }) 
                     }
-                </div>
+                </div> */}
                 <PlaylistForm user={ user } hashParam={ hashParam } savedSongs={ savedSongs } />
             </div>
 

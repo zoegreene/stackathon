@@ -9,13 +9,18 @@ export const setSavedSongs = songs => ({
 
 export const getSavedSongs = accessToken => {
     return async (dispatch) => {
-        const songs = await axios.get('https://api.spotify.com/v1/me/tracks', {
-            headers: {
-                'Authorization': `Bearer ${accessToken}`
-            },
-            limit: 50
-        });
-        dispatch(setSavedSongs(songs.data.items)); 
+        try {
+            const songs = await axios.get('https://api.spotify.com/v1/me/tracks', {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                limit: 50
+            });
+            dispatch(setSavedSongs(songs.data.items)); 
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
 }
 

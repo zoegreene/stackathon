@@ -24,20 +24,27 @@ class PlaylistForm extends React.Component {
         const { createPlaylist, user, hashParam, savedSongs } = this.props;
         const { name, duration } = this.state;
 
-        createPlaylist(user, hashParam, name, duration, savedSongs);
+        createPlaylist(user, hashParam, name, duration * 1, savedSongs);
     }
 
     render() {
         const { name, duration } = this.state;
         return (
-            <form className="playlist-form" onSubmit={ this.handleSubmit }>
-                <label htmlFor="name">Playlist Name</label>
-                <input name="name" value={ name } onChange={ this.handleChange } />
+            <div id="center-page">
+                <h2>Enter playlist details to get started:</h2>
+                <form className="playlist-form" onSubmit={ this.handleSubmit }>
+                    <div className="form-item">
+                        <label htmlFor="name">Playlist Name</label>
+                        <input name="name" value={ name } onChange={ this.handleChange } />
+                    </div>
+                    <div className="form-item">
+                        <label htmlFor="duration">Duration (minutes)</label>
+                        <input name="duration" value={ duration } onChange={ this.handleChange } />
+                    </div>
+                    <button type="submit">Create Playlist</button>
+                </form>
+            </div>
 
-                <label htmlFor="duration">Duration (minutes)</label>
-                <input name="duration" value={ duration } onChange={ this.handleChange } />
-                <button type="submit">Create Playlist</button>
-            </form>
         )
     }
 }

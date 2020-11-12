@@ -9,12 +9,17 @@ export const setUser = user => ({
 
 export const getUser = accessToken => {
     return async (dispatch) => {
-        const user = await axios.get('https://api.spotify.com/v1/me', {
-            headers: {
-                'Authorization': `Bearer ${accessToken}`
-            }
-        });
-        dispatch(setUser(user.data)); 
+        try {
+            const user = await axios.get('https://api.spotify.com/v1/me', {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            });
+            dispatch(setUser(user.data)); 
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
 }
 
