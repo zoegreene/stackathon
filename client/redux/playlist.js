@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { get } from 'jquery';
 
 const CREATE_PLAYLIST = 'CREATE_PLAYLIST';
 
@@ -10,35 +9,39 @@ export const _createPlaylist = playlist => ({
 
 export const createPlaylist = (user, hashParam, name, duration, savedSongs) => {
     return async (dispatch) => {
-        console.log('about to try with duration', typeof duration);
         try {
+            // If name is blank give it a default value
+            name === '' ? name = 'Cut for Time Playlist' : name;
             // CREATE PLAYLIST
-            // const playlist = await axios.post(`https://api.spotify.com/v1/users/${user.id}/playlists`, {
-            //     name: name,
-            //     description: "Playlist created by Cut for Time app",
-            //     public: false
-            // }, {
-            //     headers: { 'Authorization': `Bearer ${hashParam.access_token}` }
-            // });
+            let playlist = (await axios.post(`https://api.spotify.com/v1/users/${user.id}/playlists`, {
+                name: name,
+                description: "Playlist created by Cut for Time app",
+                public: false
+            }, {
+                headers: { 'Authorization': `Bearer ${hashParam.access_token}` }
+            })).data;
 
             // FIND ARRAY OF SONGS THAT MEETS CRITERIA
-            console.log('before knapsack');
-            const simpleSavedSongs = savedSongs.map(song => {
+            const simpleSavedSongs = await Promise.all(savedSongs.map( async (song) => {
+                const songLength = await getSongLength(song.track.id, hashParam);
                 return { 
                     songId: song.track.id,
-                    songLength: getSongLength(song.track.id, hashParam)
+                    songLength: Math.round(songLength)
                 }
-            });
-            console.log(simpleSavedSongs);
-            const songsToAdd = knapsack(simpleSavedSongs, duration * 60);
-            console.log('songs to add: ', songsToAdd);
+            }));
+            let songsToAdd = knapsack(simpleSavedSongs, duration * 60);
 
             // STORE THOSE SONGS INTO THE NEWLY CREATED PLAYLIST
+            // format JSON object for request body
+            songsToAdd = songsToAdd.map(song => `spotify:track:${song}`);
+            // Don't save the result, you want the playlist ID to be stored in the store
+            await axios.post(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
+                "uris": songsToAdd
+            }, {
+                headers: { 'Authorization': `Bearer ${hashParam.access_token}` }
+            });
 
-            // const songLengths = savedSongs.map(song => getSongLength(song.track.id, hashParam));
-            // console.log(getPlaylistDuration(savedSongs, hashParam));
-            // console.log('savedSongs', savedSongs);
-            // dispatch(_createPlaylist(playlist.data)); 
+            dispatch(_createPlaylist(playlist)); 
         }
         catch(err) {
             console.log(err);
@@ -54,34 +57,6 @@ const getSongLength = async (songId, hashParam) => {
     return songLength.data.track.duration;
 }
 
-// const getPlaylistDurationv1 = (playlist) => {
-//     const duration = playlist.length > 0 ? 
-//         playlist.reduce((sum, song) => sum + song.songLength, 0) : 0;
-//     return duration;
-// }
-
-// const knapsackv1 = (runningDuration, savedSongs, n, playlist = []) => {
-//     console.log('playlist', playlist);
-//     // Base case
-//     if (runningDuration === 0 || n === 0) {
-//         return playlist;
-//     }
-//     if (savedSongs[n - 1].songLength > runningDuration) {
-//         return knapsack(runningDuration, savedSongs, n - 1, playlist);
-//     }
-//     else {
-//         const newPlaylist = [...playlist];
-//         newPlaylist.push(savedSongs[n - 1]);
-//         let included = knapsack(runningDuration - savedSongs[n - 1].songLength, savedSongs, n - 1, newPlaylist);
-//         let excluded = knapsack(runningDuration, savedSongs, n - 1, playlist);
-//         if (getPlaylistDuration(included) > getPlaylistDuration(excluded)) {
-//             return included;
-//         } else {
-//             return excluded;
-//         }
-//     }
-// }
-
 const knapsack = (savedSongs, duration) => {
     let cache = [];
 
@@ -94,9 +69,7 @@ const knapsack = (savedSongs, duration) => {
     }
 
     const weights = savedSongs.map(song => song.songLength);
-    console.log('weights', weights)
     const values = savedSongs.map(song => song.songId);
-    console.log('values', values)
 
     
     for (let i = 0; i < savedSongs.length + 1; i++) {
@@ -120,7 +93,7 @@ const knapsack = (savedSongs, duration) => {
 const getPlaylistDuration = (playlist, savedSongs) => {
     return playlist.length > 0 ? 
         playlist.reduce((sum, elem) => {
-            return savedSongs.find(song => song.id === elem).songLength + sum;
+            return savedSongs.find(song => song.songId === elem).songLength + sum;
         }, 0) : 0;
 }
 

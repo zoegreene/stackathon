@@ -24,6 +24,8 @@ class PlaylistForm extends React.Component {
         const { createPlaylist, user, hashParam, savedSongs } = this.props;
         const { name, duration } = this.state;
 
+        // TODO: CHECK IF PLAYLIST DURATION IS > TOTAL DURATION OF SAVED SONGS
+        // IF SO, ADD MORE SAVED SONGS
         createPlaylist(user, hashParam, name, duration * 1, savedSongs);
     }
 
@@ -39,9 +41,9 @@ class PlaylistForm extends React.Component {
                     </div>
                     <div className="form-item">
                         <label htmlFor="duration">Duration (minutes)</label>
-                        <input name="duration" value={ duration } onChange={ this.handleChange } />
+                        <input name="duration" type="number" value={ duration } onChange={ this.handleChange } />
                     </div>
-                    <button type="submit">Create Playlist</button>
+                    <button type="submit" className="btn-primary">CREATE PLAYLIST</button>
                 </form>
             </div>
 

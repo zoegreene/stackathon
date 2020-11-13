@@ -1,4 +1,6 @@
 
+/* ------ LOGIN SCREEN ------ */
+
 .page-title {
     font-family: 'Abel', sans-serif;
     text-align: center;
@@ -19,7 +21,11 @@
     color: #FFFFFF;
     text-decoration: none;
     border-radius: 20px;
-    padding: 1rem;
+    padding: 0.5rem;
+    width: 25rem;
+    font-family: 'Abel', sans-serif;
+    font-size: medium;
+    cursor: pointer;
 }
 
 .btn-div {
@@ -51,25 +57,42 @@ nav {
 
 /* ------ PLAYLIST FORM ------ */
 
-.playlist-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 #center-page {
+    flex-direction: column;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
+    width: 25rem;
+    font-family: 'Abel', sans-serif;
+    justify-content: center;
+    align-content: center;
 }
 
 .form-item {
     display: flex;
-    justify-content: center;
-    margin: 1rem;
+    justify-content: flex-start;
+    margin: 1rem 0 1rem 0;
 }
 
 .form-item input {
     margin: 0 1rem 0 1rem;
+}
+
+/* ------ LINK TO PLAYLIST ------ */
+
+.btn-secondary {
+    background-color: black;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 0.5rem;
+    width: 25rem;
+    font-family: 'Abel', sans-serif;
+    font-size: medium;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 1rem;
 }
