@@ -57,6 +57,21 @@ const getSongLength = async (songId, hashParam) => {
     return songLength.data.track.duration;
 }
 
+const getPlaylistDuration = (playlist, savedSongs) => {
+    return playlist.length > 0 ? 
+        playlist.reduce((sum, elem) => {
+            return savedSongs.find(song => song.songId === elem).songLength + sum;
+        }, 0) : 0;
+}
+
+export const getSavedSongsDuration = async (savedSongs, hashParam) => {
+    let duration = await Promise.all(savedSongs.map( async (song) => {
+        const songLength = await getSongLength(song.track.id, hashParam);
+        return songLength;
+    }));
+    return duration.reduce((sum, elem) => sum + elem);
+}
+
 const knapsack = (savedSongs, duration) => {
     let cache = [];
 
@@ -88,13 +103,6 @@ const knapsack = (savedSongs, duration) => {
         }
     }
     return cache[savedSongs.length][duration];
-}
-
-const getPlaylistDuration = (playlist, savedSongs) => {
-    return playlist.length > 0 ? 
-        playlist.reduce((sum, elem) => {
-            return savedSongs.find(song => song.songId === elem).songLength + sum;
-        }, 0) : 0;
 }
 
 export default function userReducer(state = {}, action) {

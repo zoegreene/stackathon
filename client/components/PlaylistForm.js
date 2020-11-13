@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createPlaylist } from '../redux/playlist';
+import { createPlaylist, getSavedSongsDuration } from '../redux/playlist';
+import { getMoreSongs } from '../redux/songs';
 
 class PlaylistForm extends React.Component {
 
@@ -19,14 +20,18 @@ class PlaylistForm extends React.Component {
         this.setState({ [name]: value });
     }
 
-    handleSubmit(ev) {
+    async handleSubmit(ev) {
         ev.preventDefault();
-        const { createPlaylist, user, hashParam, savedSongs } = this.props;
+        const { createPlaylist, user, hashParam, getMoreSongs } = this.props;
         const { name, duration } = this.state;
 
-        // TODO: CHECK IF PLAYLIST DURATION IS > TOTAL DURATION OF SAVED SONGS
+        // CHECK IF DESIRED PLAYLIST DURATION IS > TOTAL DURATION OF SAVED SONGS
         // IF SO, ADD MORE SAVED SONGS
-        createPlaylist(user, hashParam, name, duration * 1, savedSongs);
+        const savedSongsDuration = await getSavedSongsDuration(this.props.songs, hashParam);
+        if (savedSongsDuration < duration * 60) {
+            await getMoreSongs(hashParam.access_token);
+        }
+        createPlaylist(user, hashParam, name, duration * 1, this.props.songs);
     }
 
     render() {
@@ -51,8 +56,13 @@ class PlaylistForm extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    createPlaylist: (user, hashParam, name, duration, songs) => dispatch(createPlaylist(user, hashParam, name, duration, songs))
+const mapStateToProps = state => ({
+    songs: state.songs
 });
 
-export default connect(null, mapDispatchToProps)(PlaylistForm);
+const mapDispatchToProps = dispatch => ({
+    createPlaylist: (user, hashParam, name, duration, songs) => dispatch(createPlaylist(user, hashParam, name, duration, songs)),
+    getMoreSongs: (accessToken) => dispatch(getMoreSongs(accessToken))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistForm);

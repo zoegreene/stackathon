@@ -2162,7 +2162,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_playlist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../redux/playlist */ "./client/redux/playlist.js");
+/* harmony import */ var _redux_songs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/songs */ "./client/redux/songs.js");
 ;
+
 
 
 
@@ -2189,21 +2191,27 @@ class PlaylistForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     });
   }
 
-  handleSubmit(ev) {
+  async handleSubmit(ev) {
     ev.preventDefault();
     const {
       createPlaylist,
       user,
       hashParam,
-      savedSongs
+      getMoreSongs
     } = this.props;
     const {
       name,
       duration
-    } = this.state; // TODO: CHECK IF PLAYLIST DURATION IS > TOTAL DURATION OF SAVED SONGS
+    } = this.state; // CHECK IF DESIRED PLAYLIST DURATION IS > TOTAL DURATION OF SAVED SONGS
     // IF SO, ADD MORE SAVED SONGS
 
-    createPlaylist(user, hashParam, name, duration * 1, savedSongs);
+    const savedSongsDuration = await (0,_redux_playlist__WEBPACK_IMPORTED_MODULE_2__.getSavedSongsDuration)(this.props.songs, hashParam);
+
+    if (savedSongsDuration < duration * 60) {
+      await getMoreSongs(hashParam.access_token);
+    }
+
+    createPlaylist(user, hashParam, name, duration * 1, this.props.songs);
   }
 
   render() {
@@ -2241,11 +2249,16 @@ class PlaylistForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 
 }
 
-const mapDispatchToProps = dispatch => ({
-  createPlaylist: (user, hashParam, name, duration, songs) => dispatch((0,_redux_playlist__WEBPACK_IMPORTED_MODULE_2__.createPlaylist)(user, hashParam, name, duration, songs))
+const mapStateToProps = state => ({
+  songs: state.songs
 });
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(null, mapDispatchToProps)(PlaylistForm));
+const mapDispatchToProps = dispatch => ({
+  createPlaylist: (user, hashParam, name, duration, songs) => dispatch((0,_redux_playlist__WEBPACK_IMPORTED_MODULE_2__.createPlaylist)(user, hashParam, name, duration, songs)),
+  getMoreSongs: accessToken => dispatch((0,_redux_songs__WEBPACK_IMPORTED_MODULE_3__.getMoreSongs)(accessToken))
+});
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(PlaylistForm));
 
 /***/ }),
 
@@ -2406,6 +2419,7 @@ const reducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
 /*! export _createPlaylist [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export createPlaylist [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getSavedSongsDuration [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -2415,6 +2429,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "_createPlaylist": () => /* binding */ _createPlaylist,
 /* harmony export */   "createPlaylist": () => /* binding */ createPlaylist,
+/* harmony export */   "getSavedSongsDuration": () => /* binding */ getSavedSongsDuration,
 /* harmony export */   "default": () => /* binding */ userReducer
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -2476,6 +2491,20 @@ const getSongLength = async (songId, hashParam) => {
   return songLength.data.track.duration;
 };
 
+const getPlaylistDuration = (playlist, savedSongs) => {
+  return playlist.length > 0 ? playlist.reduce((sum, elem) => {
+    return savedSongs.find(song => song.songId === elem).songLength + sum;
+  }, 0) : 0;
+};
+
+const getSavedSongsDuration = async (savedSongs, hashParam) => {
+  let duration = await Promise.all(savedSongs.map(async song => {
+    const songLength = await getSongLength(song.track.id, hashParam);
+    return songLength;
+  }));
+  return duration.reduce((sum, elem) => sum + elem);
+};
+
 const knapsack = (savedSongs, duration) => {
   let cache = []; // set up empty cache matrix
 
@@ -2509,12 +2538,6 @@ const knapsack = (savedSongs, duration) => {
   return cache[savedSongs.length][duration];
 };
 
-const getPlaylistDuration = (playlist, savedSongs) => {
-  return playlist.length > 0 ? playlist.reduce((sum, elem) => {
-    return savedSongs.find(song => song.songId === elem).songLength + sum;
-  }, 0) : 0;
-};
-
 function userReducer(state = {}, action) {
   switch (action.type) {
     case CREATE_PLAYLIST:
@@ -2533,7 +2556,9 @@ function userReducer(state = {}, action) {
   \*******************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getMoreSongs [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export getSavedSongs [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export setMoreSongs [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export setSavedSongs [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
@@ -2543,15 +2568,22 @@ function userReducer(state = {}, action) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setSavedSongs": () => /* binding */ setSavedSongs,
+/* harmony export */   "setMoreSongs": () => /* binding */ setMoreSongs,
 /* harmony export */   "getSavedSongs": () => /* binding */ getSavedSongs,
+/* harmony export */   "getMoreSongs": () => /* binding */ getMoreSongs,
 /* harmony export */   "default": () => /* binding */ songsReducer
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 ;
 const SET_SONGS = 'SET_SONGS';
+const SET_MORE_SONGS = 'SET_MORE_SONGS';
 const setSavedSongs = songs => ({
   type: SET_SONGS,
+  songs
+});
+const setMoreSongs = songs => ({
+  type: SET_MORE_SONGS,
   songs
 });
 const getSavedSongs = accessToken => {
@@ -2560,10 +2592,27 @@ const getSavedSongs = accessToken => {
       const songs = await axios__WEBPACK_IMPORTED_MODULE_0___default().get('https://api.spotify.com/v1/me/tracks', {
         headers: {
           'Authorization': `Bearer ${accessToken}`
-        },
-        limit: 50
+        }
       });
       dispatch(setSavedSongs(songs.data.items));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+const getMoreSongs = accessToken => {
+  return async dispatch => {
+    try {
+      const songs = await axios__WEBPACK_IMPORTED_MODULE_0___default().get('https://api.spotify.com/v1/me/tracks', {
+        params: {
+          limit: 20,
+          offset: 20
+        },
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      });
+      dispatch(setMoreSongs(songs.data.items));
     } catch (err) {
       console.log(err);
     }
@@ -2573,6 +2622,9 @@ function songsReducer(state = [], action) {
   switch (action.type) {
     case SET_SONGS:
       return action.songs;
+
+    case SET_MORE_SONGS:
+      return [...state, ...action.songs];
 
     default:
       return state;
