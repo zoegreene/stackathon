@@ -9,8 +9,8 @@ require('dotenv').config();
 const client_id = process.env.client_id;
 const client_secret = process.env.client_secret;
 
-const redirect_uri = 'http://localhost:8888/api/auth/callback'; // Your redirect uri
-// const redirect_uri = 'https://cut-for-time.herokuapp.com/api/auth/callback';
+// const redirect_uri = 'http://localhost:8888/api/auth/callback'; // Your redirect uri
+const redirect_uri = 'https://cut-for-time.herokuapp.com/api/auth/callback';
 const stateKey = 'spotify_auth_state';
 
 
