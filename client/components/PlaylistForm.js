@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createPlaylist, getSavedSongsDuration } from '../redux/playlist';
 import { getMoreSongs } from '../redux/songs';
+import PlaylistDisplay from './PlaylistDisplay';
 
 class PlaylistForm extends React.Component {
 
@@ -9,7 +10,8 @@ class PlaylistForm extends React.Component {
         super(props);
         this.state = {
             name: '',
-            duration: 0
+            duration: 0,
+            loading: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,6 +27,8 @@ class PlaylistForm extends React.Component {
         const { createPlaylist, user, hashParam, getMoreSongs } = this.props;
         const { name, duration } = this.state;
 
+        this.setState({ loading: true });
+
         // CHECK IF DESIRED PLAYLIST DURATION IS > TOTAL DURATION OF SAVED SONGS
         // IF SO, ADD MORE SAVED SONGS
         const savedSongsDuration = await getSavedSongsDuration(this.props.songs, hashParam);
@@ -35,7 +39,9 @@ class PlaylistForm extends React.Component {
     }
 
     render() {
-        const { name, duration } = this.state;
+        const { name, duration, loading } = this.state;
+        const { playlist } = this.props;
+
         return (
             <div id="center-page">
                 <h2>Enter playlist details to get started:</h2>
@@ -50,6 +56,9 @@ class PlaylistForm extends React.Component {
                     </div>
                     <button type="submit" className="btn-primary">CREATE PLAYLIST</button>
                 </form>
+                { loading ? <PlaylistDisplay /> 
+                    : <div /> 
+                }
             </div>
 
         )
@@ -57,7 +66,8 @@ class PlaylistForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    songs: state.songs
+    songs: state.songs,
+    playlist: state.playlist
 });
 
 const mapDispatchToProps = dispatch => ({

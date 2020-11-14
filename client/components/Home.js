@@ -27,9 +27,9 @@ class Home extends React.Component {
         return (
             <div>
                 <PlaylistForm user={ user } hashParam={ hashParam } savedSongs={ savedSongs } />
-                { playlist.id ? 
+                {/* { playlist.id ? 
                     <PlaylistDisplay playlist={ playlist } /> : <div /> 
-                }
+                } */}
             </div>
         )
     }
