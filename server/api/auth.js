@@ -3,6 +3,10 @@ const request = require('request');
 const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
+// const { client_id, client_secret } = require('../../constants'); // Your client id and secret
+const client_id = process.env.client_id;
+const client_secret = process.env.client_secret;
 
 require('dotenv').config();
 
