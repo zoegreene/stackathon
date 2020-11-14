@@ -44,6 +44,10 @@ export const createPlaylist = (user, hashParam, name, duration, savedSongs) => {
             // STORE THOSE SONGS INTO THE NEWLY CREATED PLAYLIST
             // format JSON object for request body
             songsToAdd = [...songsToAdd].map(song => `spotify:track:${song.songId}`);
+
+            // format for other algo
+            // songsToAdd = songsToAdd.map(song => `spotify:track:${song}`);
+
             // Don't save the result, you want the playlist ID to be stored in the store
             await axios.post(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
                 "uris": songsToAdd
