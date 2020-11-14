@@ -22,13 +22,23 @@ export const createPlaylist = (user, hashParam, name, duration, savedSongs) => {
             })).data;
 
             // FIND ARRAY OF SONGS THAT MEETS CRITERIA
-            const simpleSavedSongs = await Promise.all(savedSongs.map( async (song) => {
-                const songLength = await getSongLength(song.track.id, hashParam);
-                return { 
-                    songId: song.track.id,
+            // const simpleSavedSongs = await Promise.all(savedSongs.map( async (song) => {
+            //     const songLength = await getSongLength(song.track.id, hashParam);
+            //     return { 
+            //         songId: song.track.id,
+            //         songLength: Math.round(songLength)
+            //     }
+            // }));
+
+            const simpleSavedSongs = [];
+            for (let i = 0; i < savedSongs.length; i++) {
+                const songLength = await getSongLength(savedSongs[i].track.id, hashParam);
+                simpleSavedSongs.push ( { 
+                    songId: savedSongs[i].track.id,
                     songLength: Math.round(songLength)
-                }
-            }));
+                } );
+            }
+
             let songsToAdd = knapsack(simpleSavedSongs, duration * 60);
 
             // STORE THOSE SONGS INTO THE NEWLY CREATED PLAYLIST
