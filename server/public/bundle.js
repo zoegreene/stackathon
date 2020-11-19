@@ -2080,11 +2080,11 @@ class Navbar extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     } = this.props;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "CUT FOR TIME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "user-info"
-    }, user.display_name ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, user.display_name.toUpperCase()) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null), user.images ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    }, user.display_name ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, user.display_name.toUpperCase()) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null), user.images ? user.images[0] ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       className: "media-object",
       width: "30",
       src: user.images[0].url
-    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null))));
+    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null))));
   }
 
 }

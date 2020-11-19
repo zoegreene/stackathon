@@ -26,7 +26,9 @@ class Navbar extends React.Component {
                             <div>{ user.display_name.toUpperCase() }</div> : <div />
                         }   
                         { user.images ? 
-                            <img className="media-object" width="30" src={ user.images[0].url } /> : <div />
+                            user.images[0] ?
+                                <img className="media-object" width="30" src={ user.images[0].url } /> : <div />
+                            : <div />
                         }
                     </div>
                 </nav>
